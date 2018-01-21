@@ -26,7 +26,7 @@ def home():
 #     return render_template("main.html")
 
 
-@app.route('/host', methods=['GET','POST'])
+@app.route('/host', methods=['GET','POST','BACK'])
 def host():
     if request.method == 'POST':
         print(request.form['timeEndIn'])

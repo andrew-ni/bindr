@@ -6,20 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bindr - Hosting Page</title>
 
+
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Supermercado+One" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="static/materialize/css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/styles/style.css">
+    
   
 </head>
 <body>
-  <div class="container">
-    <div class="">
-      <a id="backBtn" class="fixed btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">arrow_back</i></a>
-    </div>
+  <div class="header"><h2>Binder</h2></div>
 
-    <h2 align="center">Bindr</h2>
+    <div class="container">
+
+      <div class="">
+          <a id="backBtn" href = "{{ url_for('home') }}" class="fixed btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">arrow_back</i></a>
+      </div>
+
     <form action= "" method="POST">  
       <p>
         <label>Location </label>
