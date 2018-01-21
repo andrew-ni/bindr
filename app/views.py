@@ -3,6 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import Base, Student, Event
 from app import app
+import requests
+import json
 
 engine = create_engine('sqlite:///events.db')
 Base.metadata.bind = engine
@@ -14,17 +16,25 @@ session = DBSession()
 @app.route('/index')
 def home():
     all_events = session.query(Event).all()
-    return render_template("main.html",events = all_events)
+    events_list = []
+    for event in all_events:
+        events_list.append(
+            {
+                'id':event.id,
+                'name':event.name,
+                'loc_name':event.loc_name,
+                'lat':str(event.loc_lat),
+                'long':str(event.loc_long),
+                'subject':event.subject,
+                'date':event.date,
+                'start':event.start,
+                'end':event.end,
+                'desc':event.desc
+            })
 
-# @app.route('/index')
-# def index():
-#     all_students = session.query(Student).all()
-#     return render_template("main.html",students = all_students)
-
-# @app.route('/main')
-# def main():
-#     return render_template("main.html")
-
+    #coordJSON = jsonify(eventsCoords)
+    #return render_template("main.html",events = all_events,coordJSON=coordJSON)
+    return render_template("main.html",events = all_events, eventsList = events_list)
 
 @app.route('/host', methods=['GET','POST','BACK'])
 def host():
@@ -37,8 +47,18 @@ def host():
         start = request.form['timeStartIn']
         end = request.form['timeEndIn']
         desc = request.form['descIn']
-        event = Event(name=n,loc_name=loc,subject=subj,date=date,start=start,end=end,desc=desc)
+        #event = Event(name=n,loc_name=loc,subject=subj,date=date,start=start,end=end,desc=desc)
 
+        #using loc get coordinates
+        #first separate loc with + to obtain address
+        #https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+        address = loc.replace(' ','+')
+        result =  json.loads(requests.get('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key=AIzaSyAPIKI9rNnmIyT-5frqg6aSqaAS3hUA69k').content.decode('utf-8'))
+        #print(result["results"][0].geometry.location.lat)
+        lat = result["results"][0]["geometry"]["location"]["lat"]
+        lng = result["results"][0]["geometry"]["location"]["lng"]
+        event = Event(name=n,loc_name=loc,loc_lat=lat,loc_long=lng,subject=subj,date=date,start=start,end=end,desc=desc)
+            
         session.add(event)
         session.commit()
         return redirect(url_for('home'))
