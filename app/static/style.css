@@ -38,9 +38,8 @@
   height: 1000px;
 }
 
-#mapDisplay {
-  height: 400px;
-  width: 100%;
+#map {
+  height: 100%;
 }
 
 #backBtn {
