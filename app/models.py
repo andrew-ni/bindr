@@ -24,6 +24,20 @@ class Student(Base):
         'description': self.description
     }
 
+class Event(Base):
+    __tablename__ = 'event'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250),nullable=False)
+    loc_name = Column(String(250),nullable=False)
+    loc_lat = Column(Float(10,6),nullable=False)
+    loc_long = Column(Float(10,6),nullable=False)
+    subject = Column(String(20),nullable=False)
+    strt = Column(date(timestring),nullable=False)
+    end = Column(date(timestring),nullable=False)
+    description = Column(String(250),nullable=False)
+    
+
 
 
 engine = create_engine('sqlite:///students.db')
