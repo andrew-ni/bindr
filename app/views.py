@@ -4,25 +4,45 @@ from sqlalchemy.orm import sessionmaker
 from .models import Base, Student, Event
 from app import app
 
-engine = create_engine('sqlite:///students.db')
+engine = create_engine('sqlite:///events.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 @app.route('/')
-def home():
-    return render_template("main.html")
-
 @app.route('/index')
-def index():
-    all_students = session.query(Student).all()
-    return render_template("main.html",students = all_students)
+def home():
+    all_events = session.query(Event).all()
+    return render_template("main.html",events = all_events)
 
-@app.route('/main')
-def main():
-    return render_template("main.html")
+# @app.route('/index')
+# def index():
+#     all_students = session.query(Student).all()
+#     return render_template("main.html",students = all_students)
 
-@app.route('/host')
+# @app.route('/main')
+# def main():
+#     return render_template("main.html")
+
+
+@app.route('/host', methods=['GET','POST'])
 def host():
-    return render_template("host.html")
+    if request.method == 'POST':
+        print(request.form['timeEndIn'])
+        n = request.form['nameIn']
+        loc = request.form['locIn']
+        subj = request.form['subjectIn']
+        date = request.form['dateIn']
+        start = request.form['timeStartIn']
+        end = request.form['timeEndIn']
+        desc = request.form['descIn']
+        event = Event(name=n,loc_name=loc,subject=subj,date=date,start=start,end=end,desc=desc)
+
+        session.add(event)
+        session.commit()
+        return redirect(url_for('home'))
+    else:
+        print('asdf')
+        return render_template("host.html")
+    return "asdf"
