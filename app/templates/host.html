@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bindr - Hosting Page</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="static/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="static/style.css">
+  
+</head>
+<body>
+  <div class="container">
+    <div class="">
+      <a id="backBtn" class="fixed btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">arrow_back</i></a>
+    </div>
+
+    <h2 align="center">Bindr</h2>
+    <form>  
+      <p>
+        <label>Location </label>
+        <input type = "text"
+          id = "locIn"
+          value = "" />
+  
+        <label>Host Name </label>
+        <input type = "text"
+          id = "nameIn"
+          value = "" />
+  
+        <label>Subject </label>
+        <input type = "text"
+          id = "subjectIn"
+          value = "" />
+          
+        <div class="row">
+          <div class="col s4">
+            <label>Date </label>
+            <input type = "date"
+              id = "dateIn"
+              value = "" />
+          </div>
+          <div class="col s4">
+            <label>Time Start</label>
+            <input type = "time"
+              id = "timeStartIn"
+              value = "" />
+          </div>
+          <div class="col s4">
+            <label>Time End</label>
+            <input type = "time"
+              id = "timeEndIn"
+              value = "" />
+          </div>
+        </div>
+        <label>Description </label>
+        <input type = "text"
+          id = "descIn"
+          maxlength = "200" 
+          value = "" />
+      </p>
+      <center>
+        <button type = "submit" id = "createBtn" class="waves-effect waves-light btn">Create</button>
+        <button type = "reset" id = "clearBtn" class="waves-effect waves-light btn">Clear</button>
+      </center>
+    </form>
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="static/materialize/js/materialize.min.js"></script>
+  <script src="static/js/host.js"></script>
+</body>
+</html>
