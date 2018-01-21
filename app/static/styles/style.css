@@ -36,6 +36,7 @@ table, tr, th, td, thead {
 .header {
   text-align: center;
   margin: auto;
+  font-family: 'Supermercado One', cursive;
 }
 .space {
   height: 1000px;
@@ -44,7 +45,7 @@ table, tr, th, td, thead {
 #backBtn {
   position: fixed;
   top: 2em;
-  left: 7em;
+  left: 2em;
 }
 /* host.html */
 label {
