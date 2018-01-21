@@ -12,7 +12,7 @@ session = DBSession()
 
 @app.route('/')
 def home():
-    return render_template("test.html")
+    return render_template("main.html")
 
 @app.route('/index')
 def index():
@@ -25,4 +25,4 @@ def main():
 
 @app.route('/host')
 def host():
-    return render_template("host.html")
+    return render_template("main.html")

@@ -1,0 +1,48 @@
+.container {
+  width: 90%
+}
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#mapDisplay {
+  height: 50%;
+  width: 75%;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#addEventBtn {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+}
+
+.header {
+  text-align: center;
+  margin: auto;
+}
+.space {
+  height: 1000px;
+}
+
+#backBtn {
+  position: fixed;
+  top: 2em;
+  left: 7em;
+}
+/* host.html */
+label {
+  display: inline-block;
+  text-align: right;
+}​
