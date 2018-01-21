@@ -13,13 +13,12 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-
 def calcTotalDate(event):
-    year = parseInt(event.date[:4])
-    month = parseInt(event.date[5:7])
-    day = parseInt(event.date[8:])
-    hour = parseInt(event.end[:2])
-    minute = parseInt(event.end[3:])
+    year = int(event.date[:4])
+    month = int(event.date[5:7])
+    day = int(event.date[8:])
+    hour = int(event.end[:2])
+    minute = int(event.end[3:])
     return minute + 60*hour + 60*24*day + 60*24*30*month + 60*24*30*12*year
 
 def calcTotalDateToday():
@@ -28,20 +27,23 @@ def calcTotalDateToday():
 
 def hasPassed(event):
     present = datetime.now()
-    year = parseInt(event.date[:4])
-    month = parseInt(event.date[5:7])
-    day = parseInt(event.date[8:])
-    hour = parseInt(event.end[:2])
-    minute = parseInt(event.end[3:])
+    year = int(event.date[:4])
+    month = int(event.date[5:7])
+    day = int(event.date[8:])
+    hour = int(event.end[:2])
+    minute = int(event.end[3:])
     date = datetime(year, month, day)
     if (date < present):
-        return true
+        return True
     else:
         return 60*hour+minute < 60*present.hour+present.minute
 
+def startIsAfterEnd(event):
+    return (60*int(event.start[:2]) + int(event.start[3:])) > (60*int(event.end[:2]) + int(event.end[3:]))
+
 eList = session.query(Event).all()
 for event in eList:
-    if (hasPassed(event)):
+    if (hasPassed(event) or startIsAfterEnd(event)):
         session.delete(event)
 session.commit()
 
@@ -54,7 +56,7 @@ def home():
     all_events = session.query(Event).all()
     events_list = []
     for event in all_events:
-        if (hasPassed(event)):
+        if (hasPassed(event) or startIsAfterEnd(event)):
             session.delete(event)
     session.commit()
 
