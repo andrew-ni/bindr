@@ -24,9 +24,6 @@
   <div id="mapDisplay">
     <div id="map"></div>
   </div>
-  <div>
-    <button onclick="console.log(eventsJSON[0]['end'])"/>"
-  </div>
   <div class="container row">
     <a id="addEventBtn" href = "{{ url_for('host') }}" class="fixed btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">add</i></a>
 
@@ -36,8 +33,10 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Location</th>
+              <th>Where</th>
+              <th>Distance</th>
               <th>Subject</th>
+              <th>Date</th>
               <th>Start</th>
               <th>End</th>
               <th>Description</th>
@@ -48,7 +47,9 @@
             <tr>
               <td>{{event.name}}</td>
               <td>{{event.loc_name}}</td>
+              <td>0 miles</td>
               <td>{{event.subject}}</td>
+              <td>{{event.date}}</td>
               <td>{{event.start}}</td>
               <td>{{event.end}}</td>
               <td>{{event.desc}}</td>

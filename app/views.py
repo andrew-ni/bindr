@@ -23,8 +23,8 @@ def home():
                 'id':event.id,
                 'name':event.name,
                 'loc_name':event.loc_name,
-                'lat':event.loc_lat,
-                'long':event.loc_long,
+                'lat':str(event.loc_lat),
+                'long':str(event.loc_long),
                 'subject':event.subject,
                 'date':event.date,
                 'start':event.start,
@@ -52,8 +52,8 @@ def host():
         #using loc get coordinates
         #first separate loc with + to obtain address
         #https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
-        address = loc.replace(" ","+")
-        result =  json.loads(requests.get('https://maps.googleapis.com/maps/api/geocode/json?address='+address+"&key="+"AIzaSyAPIKI9rNnmIyT-5frqg6aSqaAS3hUA69k").content)
+        address = loc.replace(' ','+')
+        result =  json.loads(requests.get('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key=AIzaSyAPIKI9rNnmIyT-5frqg6aSqaAS3hUA69k').content.decode('utf-8'))
         #print(result["results"][0].geometry.location.lat)
         lat = result["results"][0]["geometry"]["location"]["lat"]
         lng = result["results"][0]["geometry"]["location"]["lng"]
