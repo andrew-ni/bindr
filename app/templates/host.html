@@ -20,51 +20,51 @@
     </div>
 
     <h2 align="center">Bindr</h2>
-    <form>  
+    <form action= "" method="POST">  
       <p>
         <label>Location </label>
         <input type = "text"
-          id = "locIn"
+          name = "locIn"
           value = "" />
   
         <label>Host Name </label>
         <input type = "text"
-          id = "nameIn"
+          name = "nameIn"
           value = "" />
   
         <label>Subject </label>
         <input type = "text"
-          id = "subjectIn"
+          name = "subjectIn"
           value = "" />
           
         <div class="row">
           <div class="col s4">
             <label>Date </label>
             <input type = "date"
-              id = "dateIn"
+              name = "dateIn"
               value = "" />
           </div>
           <div class="col s4">
             <label>Time Start</label>
             <input type = "time"
-              id = "timeStartIn"
+              name = "timeStartIn"
               value = "" />
           </div>
           <div class="col s4">
             <label>Time End</label>
             <input type = "time"
-              id = "timeEndIn"
+              name = "timeEndIn"
               value = "" />
           </div>
         </div>
         <label>Description </label>
         <input type = "text"
-          id = "descIn"
+          name = "descIn"
           maxlength = "200" 
           value = "" />
       </p>
       <center>
-        <button type = "submit" id = "createBtn" class="waves-effect waves-light btn">Create</button>
+        <button type = "submit" id = "createBtn" formmethod="POST" class="waves-effect waves-light btn">Create</button>
         <button type = "reset" id = "clearBtn" class="waves-effect waves-light btn">Clear</button>
       </center>
     </form>
