@@ -23,6 +23,8 @@ def home():
                 'id':event.id,
                 'name':event.name,
                 'loc_name':event.loc_name,
+                'lat':event.loc_lat,
+                'long':event.loc_long,
                 'subject':event.subject,
                 'date':event.date,
                 'start':event.start,
