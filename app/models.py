@@ -20,10 +20,10 @@ class Student(Base):
     @property
     def serialize(self):
         return {
-        'name': self.name,
-        'id': self.id,
-        'description': self.description
-    }
+            'name': self.name,
+            'id': self.id,
+            'description': self.description
+        }
 
 class Event(Base):
     __tablename__ = 'event'
@@ -38,7 +38,13 @@ class Event(Base):
     start = Column(Integer,nullable=False)
     end = Column(Integer,nullable=False)
     desc = Column(String(250),nullable=False)
-    
+
+    @property
+    def serialize(self):
+        return {
+        'name': self.name
+    }
+
 
 
 

@@ -3,6 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import Base, Student, Event
 from app import app
+import json
+
 
 engine = create_engine('sqlite:///events.db')
 Base.metadata.bind = engine
@@ -14,17 +16,23 @@ session = DBSession()
 @app.route('/index')
 def home():
     all_events = session.query(Event).all()
-    return render_template("main.html",events = all_events)
+    events_list = []
+    for event in all_events:
+        events_list.append(
+            {
+                'id':event.id,
+                'name':event.name,
+                'loc_name':event.loc_name,
+                'subject':event.subject,
+                'date':event.date,
+                'start':event.start,
+                'end':event.end,
+                'desc':event.desc
+            })
 
-# @app.route('/index')
-# def index():
-#     all_students = session.query(Student).all()
-#     return render_template("main.html",students = all_students)
-
-# @app.route('/main')
-# def main():
-#     return render_template("main.html")
-
+    #coordJSON = jsonify(eventsCoords)
+    #return render_template("main.html",events = all_events,coordJSON=coordJSON)
+    return render_template("main.html",events = all_events, eventsList = events_list)
 
 @app.route('/host', methods=['GET','POST'])
 def host():

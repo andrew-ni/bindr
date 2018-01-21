@@ -15,12 +15,18 @@
 
 </head>
 <body>
+  <script type="text/javascript" {{ url_for('static', filename="js/app.js")}} ></script>
+  <script type="text/javascript">
+    var eventsJSON = {{eventsList|tojson}}
+  </script>
   <div class="header"><h2>Bindr</h2></div>
 
   <div id="mapDisplay">
     <div id="map"></div>
   </div>
-
+  <div>
+    <button onclick="console.log(eventsJSON[0]['end'])"/>"
+  </div>
   <div class="container row">
     <a id="addEventBtn" href = "{{ url_for('host') }}" class="fixed btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">add</i></a>
 
