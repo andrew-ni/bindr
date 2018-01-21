@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bindr - Main Page</title>
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="static/materialize/css/materialize.min.css"  media="screen,projection"/>
+  <link rel="stylesheet" href="static/style.css">
+
+  <!-- https://maps.googleapis.com/maps/api/js?key=AIzaSyAPIKI9rNnmIyT-5frqg6aSqaAS3hUA69k&callback=initMap -->
+</head>
+<body>
+  <div class="container row">
+    <a id="addEventBtn" href = "{{ url_for('host') }}" class="fixed btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">add</i></a>
+    <a id="refreshBtn" class="fixed btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">refresh</i></a>
+    
+    <div class="col s12"><h2>Bindr</h2></div>
+    
+    <div id="detailsBox" class="col s12">
+      <div id="mapDisplay">
+        <h5>Map</h5>
+      </div>
+      <div id="eventDetails">
+        <h5>Event Details</h5>
+      </div>
+    </div>
+    <div class="grid-wrapper">
+      <div id="eventsBox" class="col s12">
+          <h5>Event Listings</h5>
+        <table class="highlight bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Subject</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody id="eventList">
+            {% for event in events %}
+            <tr>
+              <td>{{event.name}}</td>
+              <td>{{event.loc_name}}</td>
+              <td>{{event.subject}}</td>
+              <td>{{event.start}}</td>
+              <td>{{event.end}}</td>
+              <td>{{event.desc}}</td>
+            </tr>
+            {% endfor %}
+            
+            <!-- <tr> -->
+              <!-- <td>Andrew</td>
+              <td>5.3 mi</td>
+              <td>Math</td>
+              <td>4:30pm</td>
+              <td>6:30pm</td>
+              <td>bois only</td>
+            </tr>
+            <tr>
+              <td>Andrew</td>
+              <td>5.3 mi</td>
+              <td>Math</td>
+              <td>4:30pm</td>
+              <td>6:30pm</td>
+              <td>bois only</td>
+            </tr>
+            <tr>
+              <td>Andrew</td>
+              <td>5.3 mi</td>
+              <td>Math</td>
+              <td>4:30pm</td>
+              <td>6:30pm</td>
+              <td>bois only</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="space">
+
+  </div>
+  <!--Import jQuery before materialize.js-->
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="static/materialize/js/materialize.min.js"></script>
+  <script src="static/js/main.js"></script> -->
+</body>
+</html>

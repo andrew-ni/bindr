@@ -1,0 +1,55 @@
+.container {
+  width: 90%
+}
+
+/* #eventsBox {
+  grid-area: eventsBox;
+}
+
+#detailsBox {
+  grid-area: detailsBox;
+} */
+
+/* .grid-wrapper {
+  display: grid;
+} */
+
+/* @media(min-width: 500px) {
+  .grid-wrapper {
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas:
+      "eventsBox detailsBox"
+  }
+} */
+
+#addEventBtn {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+
+#refreshBtn {
+  position: fixed;
+  top: 1em;
+  right: 6em;
+}
+
+.space {
+  height: 1000px;
+}
+
+#mapDisplay {
+  height: 400px;
+  width: 100%;
+}
+
+#backBtn {
+  position: fixed;
+  top: 2em;
+  left: 7em;
+}
+/* host.html */
+label {
+  display: inline-block;
+  text-align: right;
+}​
