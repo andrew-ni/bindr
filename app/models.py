@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Float, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -33,9 +33,9 @@ class Event(Base):
     loc_lat = Column(Float(10,6),nullable=False)
     loc_long = Column(Float(10,6),nullable=False)
     subject = Column(String(20),nullable=False)
-    strt = Column(date(timestring),nullable=False)
-    end = Column(date(timestring),nullable=False)
-    description = Column(String(250),nullable=False)
+    strt = Column(Date(),nullable=False)
+    end = Column(Date(),nullable=False)
+    desc = Column(String(250),nullable=False)
     
 
 
