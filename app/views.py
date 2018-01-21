@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .models import Base, Student
+from .models import Base, Student, Event
 from app import app
 
 engine = create_engine('sqlite:///students.db')
